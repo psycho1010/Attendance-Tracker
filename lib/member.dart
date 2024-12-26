@@ -104,7 +104,8 @@ List<Member> fakeMembers = [
     profileImg: Image.asset('assets/images/ayush.jpeg'),
     name: 'Ayush Gilberg',
     id: 'WSL0054',
-    status: 'NOT LOGGED-IN YET',
+    status: 'PRESENT',
+    checkInTime: '09:30 am',
     latitude: 28.6728611111,
     longitude: 77.1373611111,
     visitedLocations: [

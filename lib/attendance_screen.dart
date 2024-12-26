@@ -4,6 +4,16 @@ import 'package:latlong2/latlong.dart';
 import 'member.dart'; // Assuming Member and VisitedLocation are defined here
 import 'route_screen.dart';
 
+// Ombre Purple Color Scheme
+const Color ombrePurpleStart = Color(0xFF6A1B9A); // Deep Purple
+const Color ombrePurpleMid = Color(0xFF8E24AA); // Medium Purple
+const Color ombrePurpleEnd = Color(0xFFD81B60); // Pinkish Purple
+const Color ombreAccent = Color(0xFFF06292); // Light Purple-Pink Accent
+const Color backgroundLight =
+    Color(0xFFF3E5F5); // Very Light Purple for backgrounds
+const Color textLight = Colors.white; // Light text
+const Color textDark = Colors.black87; // Dark text
+
 class AttendanceScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -16,12 +26,13 @@ class AttendanceScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Attendance",
             style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold)),
-        backgroundColor: const Color.fromARGB(255, 72, 29, 201),
+                color: textLight, fontSize: 22, fontWeight: FontWeight.bold)),
+        backgroundColor: ombrePurpleStart,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(
+            Icons.menu,
+            color: textLight,
+          ),
           onPressed: () {
             _scaffoldKey.currentState?.openDrawer();
           },
@@ -33,7 +44,7 @@ class AttendanceScreen extends StatelessWidget {
           children: <Widget>[
             DrawerHeader(
               decoration: const BoxDecoration(
-                color: Colors.purple,
+                color: ombrePurpleStart,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -477,50 +488,60 @@ class _AllMembersScreenState extends State<AllMembersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Members"),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(56.0),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
+      body: Column(
+        children: [
+          // AppBar Section
+          AppBar(
+            title: Text(
+              "Members",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            backgroundColor: ombrePurpleStart, // Set AppBar background to blue
+          ),
+          // Search Bar Section
+          Container(
+            color: Colors.white,
+            padding: EdgeInsets.all(8.0),
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
                 labelText: 'Search Members',
                 prefixIcon: Icon(Icons.search),
-                // Curved corners for the search bar
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                  borderRadius: BorderRadius.circular(30.0),
                   borderSide: BorderSide(color: Colors.grey, width: 1.0),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                  borderRadius: BorderRadius.circular(30.0),
                   borderSide: BorderSide(color: Colors.blue, width: 2.0),
                 ),
               ),
             ),
           ),
-        ),
-      ),
-      body: ListView.builder(
-        itemCount: filteredMembers.length,
-        itemBuilder: (context, index) {
-          final member = filteredMembers[index];
-          return ListTile(
-            leading: CircleAvatar(
-              radius: 18,
-              backgroundImage: member.profileImg.image,
+          // List of Members
+          Expanded(
+            child: ListView.builder(
+              itemCount: filteredMembers.length,
+              itemBuilder: (context, index) {
+                final member = filteredMembers[index];
+                return ListTile(
+                  leading: CircleAvatar(
+                    radius: 18,
+                    backgroundImage: member.profileImg.image,
+                  ),
+                  title: Text("${member.name}"),
+                );
+              },
             ),
-            title: Row(
-              children: [
-                Text("${member.name}"),
-              ],
-            ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
