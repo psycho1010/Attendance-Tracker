@@ -83,7 +83,7 @@ List<Member> fakeMembers = [
   Member(
     profileImg: Image.asset('assets/images/arun.jpeg'),
     name: 'Arun Williamson',
-    id: 'WSL0054',
+    id: 'WSL0064',
     status: 'NOT LOGGED-IN YET',
     latitude: 28.6423055556,
     longitude: 77.1259444444,
@@ -103,7 +103,7 @@ List<Member> fakeMembers = [
   Member(
     profileImg: Image.asset('assets/images/ayush.jpeg'),
     name: 'Ayush Gilberg',
-    id: 'WSL0054',
+    id: 'SL0004',
     status: 'PRESENT',
     checkInTime: '09:30 am',
     latitude: 28.6728611111,
@@ -121,6 +121,25 @@ List<Member> fakeMembers = [
       ),
     ],
   ),
-
+  Member(
+    profileImg: Image.asset('assets/images/profile.jpeg'),
+    name: 'Vinove',
+    id: 'WSL0054',
+    status: 'NOT LOGGED-IN YET',
+    latitude: 28.6728611111,
+    longitude: 77.1373611111,
+    visitedLocations: [
+      VisitedLocation(
+        timestamp: DateTime.now().subtract(Duration(hours: 6)),
+        latitude: 28.6728611111,
+        longitude: 77.1373611111,
+      ),
+      VisitedLocation(
+        timestamp: DateTime.now().subtract(Duration(hours: 7)),
+        latitude: 28.6753055556,
+        longitude: 77.1389444444,
+      ),
+    ],
+  ),
   // Add more members as necessary...
 ];

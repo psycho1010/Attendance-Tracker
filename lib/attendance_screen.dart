@@ -10,7 +10,7 @@ const Color ombrePurpleMid = Color(0xFF8E24AA); // Medium Purple
 const Color ombrePurpleEnd = Color(0xFFD81B60); // Pinkish Purple
 const Color ombreAccent = Color(0xFFF06292); // Light Purple-Pink Accent
 const Color backgroundLight =
-    Color(0xFFF3E5F5); // Very Light Purple for backgrounds
+Color(0xFFF3E5F5); // Very Light Purple for backgrounds
 const Color textLight = Colors.white; // Light text
 const Color textDark = Colors.black87; // Dark text
 
@@ -53,14 +53,14 @@ class AttendanceScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.av_timer, // Replace with the desired icon
-                        color: Colors.white,
+                        color: textLight,
                         size: 24, // Adjust size as needed
                       ),
                       SizedBox(width: 2),
                       Text(
-                        'workstatus',
+                        'WayPoint',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: textLight,
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
@@ -80,12 +80,12 @@ class AttendanceScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            'Vinove Software & Services',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                            'Vinove',
+                            style: TextStyle(color: textLight, fontSize: 16),
                           ),
                           Text(
-                            'v&s@gmail.com',
-                            style: TextStyle(color: Colors.white70),
+                            'vinove@gmail.com',
+                            style: TextStyle(color: textLight),
                           ),
                         ],
                       ),
@@ -250,58 +250,59 @@ class AttendanceScreen extends StatelessWidget {
               children: [
                 // Check if the user has checked in
                 if (member.checkInTime == null)
-                  // If no check-in time, display "Not Logged-In Yet"
+                // If no check-in time, display "Not Logged-In Yet"
                   Text(
                     "Not Logged-In Yet",
                     style: TextStyle(color: Colors.grey),
                   )
-                else if (member.checkOutTime == null)
-                  // If user has checked in but not checked out, display "Working"
-                  Row(
-                    children: [
-                      // Green arrow before checkInTime
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.green,
-                        size: 16,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(member.checkInTime ?? "Not Available"),
-                      const SizedBox(width: 16),
-                      Icon(
-                        Icons.error,
-                        color: Colors.yellow,
-                        size: 16,
-                      ),
-                      Text("Working", style: TextStyle(color: Colors.orange)),
-                    ],
-                  )
                 else
+                  if (member.checkOutTime == null)
+                  // If user has checked in but not checked out, display "Working"
+                    Row(
+                      children: [
+                        // Green arrow before checkInTime
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.green,
+                          size: 16,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(member.checkInTime ?? "Not Available"),
+                        const SizedBox(width: 16),
+                        Icon(
+                          Icons.error,
+                          color: Colors.yellow,
+                          size: 16,
+                        ),
+                        Text("Working", style: TextStyle(color: Colors.orange)),
+                      ],
+                    )
+                  else
                   // If the user has checked in and out, show both times
-                  Row(
-                    children: [
-                      // Green arrow before checkInTime
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.green,
-                        size: 16,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(member.checkInTime ?? "Not Available"),
+                    Row(
+                      children: [
+                        // Green arrow before checkInTime
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.green,
+                          size: 16,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(member.checkInTime ?? "Not Available"),
 
-                      const SizedBox(width: 16),
-                      // Add spacing between the times
+                        const SizedBox(width: 16),
+                        // Add spacing between the times
 
-                      // Red arrow before checkOutTime
-                      Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.red,
-                        size: 16,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(member.checkOutTime ?? "Not Available"),
-                    ],
-                  ),
+                        // Red arrow before checkOutTime
+                        Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.red,
+                          size: 16,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(member.checkOutTime ?? "Not Available"),
+                      ],
+                    ),
               ],
             ),
             trailing: Row(
@@ -328,8 +329,9 @@ class AttendanceScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => RouteScreen(
-                            visitedLocations: member.visitedLocations),
+                        builder: (context) =>
+                            RouteScreen(
+                                visitedLocations: member.visitedLocations),
                       ),
                     );
                   },
@@ -360,9 +362,9 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
   Widget build(BuildContext context) {
     List<VisitedLocation> filteredLocations = widget.member.visitedLocations
         .where((location) =>
-            location.timestamp.day == selectedDate.day &&
-            location.timestamp.month == selectedDate.month &&
-            location.timestamp.year == selectedDate.year)
+    location.timestamp.day == selectedDate.day &&
+        location.timestamp.month == selectedDate.month &&
+        location.timestamp.year == selectedDate.year)
         .toList();
 
     return Scaffold(
@@ -391,7 +393,7 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
             child: FlutterMap(
               options: MapOptions(
                 initialCenter:
-                    LatLng(widget.member.latitude, widget.member.longitude),
+                LatLng(widget.member.latitude, widget.member.longitude),
                 initialZoom: 13.0,
                 minZoom: 10.0,
                 maxZoom: 18.0,
@@ -495,7 +497,7 @@ class _AllMembersScreenState extends State<AllMembersScreen> {
             title: Text(
               "Members",
               style: TextStyle(
-                color: Colors.white,
+                color: textLight,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -504,7 +506,7 @@ class _AllMembersScreenState extends State<AllMembersScreen> {
           ),
           // Search Bar Section
           Container(
-            color: Colors.white,
+            color: textLight,
             padding: EdgeInsets.all(8.0),
             child: TextField(
               controller: _searchController,
@@ -536,12 +538,157 @@ class _AllMembersScreenState extends State<AllMembersScreen> {
                     radius: 18,
                     backgroundImage: member.profileImg.image,
                   ),
-                  title: Text("${member.name}"),
+                  title: Text(member.name),
                 );
               },
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+
+//code B
+import 'package:flutter/material.dart';
+import 'dart:math';
+import 'map_screen.dart';
+import 'member.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+class AttendanceScreen extends StatefulWidget {
+  @override
+  _AttendanceScreenState createState() => _AttendanceScreenState();
+}
+
+class _AttendanceScreenState extends State<AttendanceScreen> {
+  // This map will track the visited locations by user name
+  Map<String, List<Map<String, dynamic>>> userVisitedLocations = {
+  }; // **Added functionality**
+
+  // Function to get location name using latitude and longitude
+  Future<String> _getLocationName(double latitude, double longitude) async {
+    // **Added functionality**
+    final apiUrl =
+        'https://nominatim.openstreetmap.org/reverse?lat=$latitude&lon=$longitude&format=json'; // **Added functionality**
+    try {
+      print('Fetching address for coordinates: ($latitude, $longitude)');
+      final response = await http.get(Uri.parse(apiUrl));
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        print('Received data: $data');
+        // Nominatim returns a formatted address, we return the display name
+        if (data.containsKey('display_name')) {
+          return data['display_name'] ??
+              'Unknown Location'; // **Added functionality**
+        } else {
+          print('No display_name found in data: $data');
+        }
+      } else {
+        print('Failed to fetch location name. Status code: ${response
+            .statusCode}');
+      }
+    } catch (e) {
+      print('Error occurred: $e');
+    }
+    return 'Unknown Location'; // Default in case of error
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Optionally, initialize with some pre-existing locations
+    userVisitedLocations = {}; // Starting with an empty map
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Attendance'),
+        backgroundColor: const Color.fromARGB(255, 72, 29, 201),
+      ),
+      body: ListView.builder(
+        itemCount: fakeMembers.length,
+        itemBuilder: (context, index) {
+          final member = fakeMembers[index];
+          return ListTile(
+            leading: CircleAvatar(
+              child: Text(member.name[0]),
+            ),
+            title: Text('${member.name} (${member.id})'),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Check-in: ${member.checkInTime ?? 'N/A'}'),
+                Text('Check-out: ${member.checkOutTime ?? 'N/A'}'),
+              ],
+            ),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.calendar_today,
+                    color: const Color.fromARGB(255, 96, 39, 176)),
+                SizedBox(width: 8),
+                IconButton(
+                  icon: Icon(Icons.my_location, color: Colors.orange),
+                  onPressed: () async {
+                    // **Added functionality**
+                    // Generate a random new location within a realistic range
+                    double randomDistance = 2000 +
+                        Random().nextDouble() * 1000; // 2 to 3 km
+                    double randomDistanceInDegrees = randomDistance /
+                        111000; // 1 degree ≈ 111 km
+                    double randomAngle = Random().nextDouble() * 2 * pi;
+                    double newLatitude = member.latitude +
+                        randomDistanceInDegrees * cos(randomAngle);
+                    double newLongitude = member.longitude +
+                        randomDistanceInDegrees * sin(randomAngle);
+
+                    // Ensure new coordinates are within valid ranges
+                    newLatitude = newLatitude.clamp(-90.0, 90.0);
+                    newLongitude = newLongitude.clamp(-180.0, 180.0);
+
+                    // Get the location name using Reverse Geocoding
+                    String locationName = await _getLocationName(
+                        newLatitude, newLongitude); // **Added functionality**
+
+                    // Check if the member already has a visited locations list
+                    if (!userVisitedLocations.containsKey(member.name)) {
+                      userVisitedLocations[member.name] = [];
+                    }
+
+                    // Add the new location to that member's visited locations list
+                    setState(() {
+                      userVisitedLocations[member.name]!.add({
+                        'latitude': newLatitude,
+                        'longitude': newLongitude,
+                        'name': locationName, // **Added functionality**
+                      });
+                    });
+
+                    // Navigate to the MapScreen with the user's specific visited locations
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            MapScreen(
+                              latitude: newLatitude,
+                              longitude: newLongitude,
+                              name: member.name,
+                              visitedLocations: userVisitedLocations[member
+                                  .name]!, // **Added functionality**
+                            ),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
