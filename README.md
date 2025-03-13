@@ -12,6 +12,6 @@ A **Flutter-based mobile application** for real-time **attendance tracking** wit
 - **Flutter** – Cross-platform mobile development.  
 - **Dart** – Programming language for Flutter.  
 - **Flutter Map** – Interactive map visualization and GPS-based tracking.  
-- ** SQLite**  – Data storage and user authentication.  
+- **SQLite**  – Data storage and user authentication.  
 
 
