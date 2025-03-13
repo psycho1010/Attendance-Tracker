@@ -1,16 +1,15 @@
-# flutter_project2
+Attendance Tracker 📍✅
+A Flutter-based mobile application for real-time attendance tracking with map-based location visualization. This app ensures accurate attendance records by leveraging GPS tracking and the Google Maps API.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Features 🚀
+Real-time Location Tracking – Captures and verifies user attendance based on GPS.
+Map-Based Visualization – Displays attendance data on an interactive map.
+Secure & Reliable – Prevents spoofing by ensuring users are within designated locations.
+User-Friendly Interface – Built with Flutter for a seamless experience.
+Offline Mode – Stores attendance data locally and syncs when online.
+Technologies Used 🛠
+Flutter – Cross-platform mobile development.
+Dart – Programming language for Flutter.
+Google Maps API – Interactive map visualization.
+Geolocation & Geocoding – GPS-based tracking.
+Firebase / SQLite (Optional) – Data storage and user authentication.
