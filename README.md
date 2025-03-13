@@ -11,8 +11,7 @@ A **Flutter-based mobile application** for real-time **attendance tracking** wit
 ## **Technologies Used** 🛠  
 - **Flutter** – Cross-platform mobile development.  
 - **Dart** – Programming language for Flutter.  
-- **Google Maps API** – Interactive map visualization.  
-- **Geolocation & Geocoding** – GPS-based tracking.  
+- **Flutter Map** – Interactive map visualization and GPS-based tracking.  
 - ** SQLite**  – Data storage and user authentication.  
 
 
